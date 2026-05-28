@@ -2,7 +2,7 @@ services:
   hermes:
     build:
       context: ../
-      dockerfile: ../Docker/Dockerfile
+      dockerfile: Docker/Dockerfile
       args:
         HOME: /hermes
         NVM_DIR: /hermes/.nvm

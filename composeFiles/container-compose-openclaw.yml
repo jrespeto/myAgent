@@ -2,7 +2,7 @@ services:
   openclaw:
     build:
       context: ../
-      dockerfile: ../Docker/Dockerfile
+      dockerfile: Docker/Dockerfile
       args:
         HOME: /openclaw
         NVM_DIR: /openclaw/.nvm
