@@ -1,0 +1,33 @@
+services:
+  openclaw:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        HOME: /openclaw
+        NVM_DIR: /openclaw/.nvm
+        RDP_USER: openclaw
+        RDP_PASSWORD: openclaw
+        # Desktop environment: i3 | openbox
+        DTE: i3
+    ports:
+      - "33389:3389"  # RDP  — user session
+      - "18789:18789" # OpenClaw Gateway
+    restart: unless-stopped
+    privileged: true
+    shm_size: "8g"
+    environment:
+      OPENCLAW_GATEWAY_MODE: remote
+      OPENCLAW_GATEWAY_BIND: lan
+      TZ: "America/New_York"
+      RDP_USER: openclaw
+      RDP_PASSWORD: openclaw
+      CONTAINER_HOST: unix:///run/podman/podman.sock
+      DOCKER_HOST: unix:///run/podman/podman.sock
+    volumes:
+      - ./openclaw-home:/home/openclaw
+      - ./linuxbrew:/home/linuxbrew
+      - ./nix:/nix
+      - /var/run/podman/podman.sock:/run/podman/podman.sock
+      - /var/lib/containers:/var/lib/containers
+
