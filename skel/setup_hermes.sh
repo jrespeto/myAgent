@@ -1,4 +1,4 @@
-# If image setup 
+#!/bin/bash
 
 action=$1
 

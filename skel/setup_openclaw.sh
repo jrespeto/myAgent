@@ -1,3 +1,4 @@
+#!/bin/bash
 
 action=$1 # 'image-build'
 
