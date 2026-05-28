@@ -153,7 +153,7 @@ USER ${RDP_USER}
 
 # Download and install nvm, node, and openclaw
 RUN /etc/skel/setup_nvm.sh && \
-    /etc/skel/setup_${RDP_USER}.sh && \
+    /etc/skel/setup_${RDP_USER}.sh image-build && \
     /etc/skel/clean_up.sh
 
 USER root
