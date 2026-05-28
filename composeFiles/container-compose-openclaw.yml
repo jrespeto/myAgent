@@ -1,7 +1,7 @@
 services:
   openclaw:
     build:
-      context: ../
+      context: ./
       dockerfile: Docker/Dockerfile
       args:
         HOME: /openclaw

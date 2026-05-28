@@ -1,7 +1,7 @@
 services:
   hermes:
     build:
-      context: ../
+      context: ./
       dockerfile: Docker/Dockerfile
       args:
         HOME: /hermes
