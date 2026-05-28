@@ -1,4 +1,4 @@
-# myOpenClaw
+# myAgent Setup
  
 A containerised remote desktop environment running Ubuntu 25.10 with xrdp, systemd, and the OpenClaw agent. Designed to run on a headless server via Podman.
 
