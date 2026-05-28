@@ -1,0 +1,7 @@
+openclaw_home
+openclaw_home*
+.git
+dist
+build
+.cache
+*.log

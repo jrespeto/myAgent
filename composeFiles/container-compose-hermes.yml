@@ -1,0 +1,31 @@
+services:
+  hermes:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        HOME: /hermes
+        NVM_DIR: /hermes/.nvm
+        RDP_USER: hermes
+        RDP_PASSWORD: hermes
+        # Desktop environment: i3 | openbox
+        DTE: i3
+    ports:
+      - "43389:3389"  # RDP  — user session
+      - "9119:9119" # Hermes Dashboard
+    restart: unless-stopped
+    privileged: true
+    shm_size: "8g"
+    environment:
+      TZ: "America/New_York"
+      RDP_USER: hermes
+      RDP_PASSWORD: hermes
+      CONTAINER_HOST: unix:///run/podman/podman.sock
+      DOCKER_HOST: unix:///run/podman/podman.sock
+    volumes:
+      - ./hermes-home:/home/hermes
+      - ./linuxbrew:/home/linuxbrew
+      - ./nix:/nix
+      - /var/run/podman/podman.sock:/run/podman/podman.sock
+      - /var/lib/containers:/var/lib/containers
+
