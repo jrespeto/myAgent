@@ -13,6 +13,7 @@ services:
     ports:
       - "43389:3389"  # RDP  — user session
       - "9119:9119" # Hermes Dashboard
+      - "3100:3100" # PaperClip
     restart: unless-stopped
     privileged: true
     shm_size: "8g"
