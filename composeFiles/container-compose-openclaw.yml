@@ -13,6 +13,7 @@ services:
     ports:
       - "33389:3389"  # RDP  — user session
       - "18789:18789" # OpenClaw Gateway
+      - "2200:22"
     restart: unless-stopped
     privileged: true
     shm_size: "8g"

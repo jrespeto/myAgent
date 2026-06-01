@@ -25,6 +25,7 @@ RUN set -eux; \
   apt-get update; \
   apt-get install -y --no-install-recommends \
     systemd \
+    openssh-server \
     systemd-sysv \
     libpam-systemd \
     ffmpeg \
@@ -49,6 +50,8 @@ RUN set -eux; \
     htop \
     jq \
     yq \
+    xdotool \
+    scrot \
     bat \
     fd-find \
     ripgrep \
@@ -57,6 +60,10 @@ RUN set -eux; \
     lsof \
     build-essential \
     net-tools \
+    xfonts-encodings \
+    fonts-droid-fallback \
+    fonts-urw-base35 \
+    xfonts-utils \
     fonts-dejavu \
     fonts-liberation \
     fonts-noto-core \
@@ -90,6 +97,11 @@ RUN set -eux; \
   mkdir -p /etc/systemd/system/multi-user.target.wants && \
   ln -sf /lib/systemd/system/supervisor.service /etc/systemd/system/multi-user.target.wants/supervisor.service && \
   ln -sf /lib/systemd/system/systemd-logind.service /etc/systemd/system/multi-user.target.wants/systemd-logind.service && \
+  # ln -sf /lib/systemd/system/dbus.service /etc/systemd/system/multi-user.target.wants/dbus.service && \
+  # ln -sf /lib/systemd/system/pipewire.service /etc/systemd/system/multi-user.target.wants/pipewire.service && \
+  # ln -sf /lib/systemd/system/pipewire-pulse.service /etc/systemd/system/multi-user.target.wants/pipewire-pulse.service && \
+  # ln -sf /lib/systemd/system/wireplumber.service /etc/systemd/system/multi-user.target.wants/wireplumber.service && \
+  ln -sf /lib/systemd/system/ssh.service /etc/systemd/system/multi-user.target.wants/ssh.service && \
   mkdir -p /etc/systemd/system/supervisor.service.d && \
   printf '[Service]\nPassEnvironment=RDP_USER RDP_PASSWORD\n' > /etc/systemd/system/supervisor.service.d/env.conf; \
   apt-get autoremove -y; \
