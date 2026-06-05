@@ -24,6 +24,12 @@ services:
       RDP_PASSWORD: hermes
       CONTAINER_HOST: unix:///run/podman/podman.sock
       DOCKER_HOST: unix:///run/podman/podman.sock
+      NB_ALLOW_SERVER_SSH: true
+      NB_ENABLE_SSH_ROOT: true
+      NB_DISABLE_SSH_AUTH: true
+      NB_SETUP_KEY: ${NB_SETUP_KEY}
+      NB_HOSTNAME: hermes1
+      NB_MANAGEMENT_URL: https://netbird.shadowtech.net
     volumes:
       - ./hermes-home:/home/hermes
       - ./linuxbrew:/home/linuxbrew

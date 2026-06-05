@@ -17,14 +17,13 @@ RUN set -eux; \
   apt-get update; \
   apt-get install -y --no-install-recommends ca-certificates curl gnupg; \
   mkdir -p /etc/apt/keyrings; \
-  curl -fsSL https://dl.google.com/linux/linux_signing_key.pub \
-    | gpg --dearmor -o /etc/apt/keyrings/google-chrome.gpg; \
-  chmod a+r /etc/apt/keyrings/google-chrome.gpg; \
-  echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" \
-    > /etc/apt/sources.list.d/google-chrome.list; \
+  echo "deb [arch=amd64 trusted=yes] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list; \
+  echo 'deb [trusted=yes] https://pkgs.netbird.io/debian stable main' > /etc/apt/sources.list.d/netbird.list; \
   apt-get update; \
   apt-get install -y --no-install-recommends \
     systemd \
+    netbird \
+    netbird-ui \
     openssh-server \
     systemd-sysv \
     libpam-systemd \
