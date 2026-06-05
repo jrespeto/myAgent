@@ -138,7 +138,8 @@ COPY --chown=root:root skel/ /etc/skel/
 
 RUN printf 'export XDG_RUNTIME_DIR=/run/user/$(id -u)\nmkdir -p "$XDG_RUNTIME_DIR"\nchmod 700 "$XDG_RUNTIME_DIR"\n' \
   > /etc/profile.d/xdg-runtime.sh && \
-  chmod 644 /etc/profile.d/xdg-runtime.sh
+  chmod 644 /etc/profile.d/xdg-runtime.sh && \
+  chmod +x /etc/supervisor/scripts/*.sh
 
 # ── Create app user ──────────────────────────────────────────────────────────
 RUN chmod +x /prep.sh; \
