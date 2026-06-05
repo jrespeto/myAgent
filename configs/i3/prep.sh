@@ -116,9 +116,6 @@ mkdir -p /var/run/xrdp /var/log/xrdp /tmp/.X11-unix
 chown xrdp:xrdp /var/run/xrdp 2>/dev/null || true
 chmod 1777 /tmp /tmp/.X11-unix
 
-echo "=== prep.sh (i3) finished ==="
-exit 0
-
 # start hermes-dash with supervisorctl if user is hermes, otherwise skip
 if [ "${RDP_USER}" = "hermes" ]; then
     echo "Starting Hermes agent for user 'hermes'..."
@@ -138,3 +135,6 @@ StartupWMClass=Hermes
 EOF
     chmod +x /usr/share/applications/hermes.desktop
 fi
+
+echo "=== prep.sh (i3) finished ==="
+exit 0
