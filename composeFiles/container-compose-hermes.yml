@@ -12,9 +12,9 @@ services:
         DTE: i3
     ports:
       - "43389:3389"  # RDP  — user session
-      - "9119:9119" # Hermes Dashboard
-      - "3100:3100" # PaperClip
-      - "2200:22"
+      # - "9119:9119" # Hermes Dashboard - access over netbird 
+      # - "3100:3100" # PaperClip
+      - "2202:22"     # SSH 
     restart: unless-stopped
     privileged: true
     shm_size: "8g"
