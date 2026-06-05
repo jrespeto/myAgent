@@ -120,23 +120,21 @@ echo "=== prep.sh (i3) finished ==="
 exit 0
 
 # start hermes-dash with supervisorctl if user is hermes, otherwise skip
-if [ "$RDP_USER" == "hermes" ]; then
+if [ "${RDP_USER}" = "hermes" ]; then
     echo "Starting Hermes agent for user 'hermes'..."
     supervisorctl start hermes-dash
 
-    echo "Droping desktop launcher for user 'hermes'..."
-
+    echo "Dropping desktop launcher for user 'hermes'..."
     cat > /usr/share/applications/hermes.desktop << EOF
 [Desktop Entry]
 Type=Application
 Name=Hermes
 Comment=Hermes desktop app
-Exec=~/.local/bin/hermes desktop
+Exec=/hermes/.local/bin/hermes desktop
 Icon=utilities-terminal
 Terminal=false
 Categories=Utility;
 StartupWMClass=Hermes
 EOF
     chmod +x /usr/share/applications/hermes.desktop
-
 fi
