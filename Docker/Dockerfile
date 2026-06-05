@@ -102,7 +102,7 @@ RUN set -eux; \
   # ln -sf /lib/systemd/system/wireplumber.service /etc/systemd/system/multi-user.target.wants/wireplumber.service && \
   ln -sf /lib/systemd/system/ssh.service /etc/systemd/system/multi-user.target.wants/ssh.service && \
   mkdir -p /etc/systemd/system/supervisor.service.d && \
-  printf '[Service]\nPassEnvironment=RDP_USER RDP_PASSWORD\n' > /etc/systemd/system/supervisor.service.d/env.conf; \
+  printf '[Service]\nPassEnvironment=RDP_USER RDP_PASSWORD NB_SETUP_KEY NB_MANAGEMENT_URL NB_HOSTNAME\n' > /etc/systemd/system/supervisor.service.d/env.conf; \
   apt-get autoremove -y; \
   apt-get clean; \
   rm -rf /var/lib/apt/lists/*; \
