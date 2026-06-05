@@ -18,6 +18,8 @@ services:
     restart: unless-stopped
     privileged: true
     shm_size: "8g"
+    env_file:
+      - .env
     environment:
       TZ: "America/New_York"
       RDP_USER: hermes
@@ -28,8 +30,8 @@ services:
       NB_ENABLE_SSH_ROOT: true
       NB_DISABLE_SSH_AUTH: true
       NB_SETUP_KEY: ${NB_SETUP_KEY}
-      NB_HOSTNAME: hermes1
-      NB_MANAGEMENT_URL: https://netbird.shadowtech.net
+      NB_HOSTNAME: ${NB_HOSTNAME}
+      NB_MANAGEMENT_URL: ${NB_MANAGEMENT_URL}
     volumes:
       - ./hermes-home:/home/hermes
       - ./linuxbrew:/home/linuxbrew
