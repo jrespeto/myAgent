@@ -20,8 +20,6 @@ order += "load"
 order += "memory"
 order += "tztime local"
 
-
-
 ethernet eth0 {
     format_up = "E: %ip (%speed)"
     format_down = "E: down"
@@ -120,3 +118,9 @@ chmod 1777 /tmp /tmp/.X11-unix
 
 echo "=== prep.sh (i3) finished ==="
 exit 0
+
+# start hermes-dash with supervisorctl if user is hermes, otherwise skip
+if [ "$RDP_USER" == "hermes" ]; then
+    echo "Starting Hermes agent for user 'hermes'..."
+    supervisorctl start hermes-dash
+fi
